@@ -30,7 +30,7 @@ void loop() {
         delay(del);
     }
     for (size_t i = 0; i < 1000; i++) {
-        if (digitalRead(0)) bids();
+        if (!digitalRead(0)) bids();
         delay(1);
     }
     for (int i = 140; i > 0; i--) {
@@ -39,7 +39,7 @@ void loop() {
         delay(del);
     }
     for (size_t i = 0; i < 1000; i++) {
-        if (digitalRead(0)) bids();
+        if (!digitalRead(0)) bids();
         delay(1);
     }
 }
@@ -47,7 +47,7 @@ void loop() {
 /* --- for bve trainsim through bids serial --- */
 
 void bids() {
-    while (digitalRead(0)) {
+    while (!digitalRead(0)) {
         Serial.println("TRIE1");
         auto res = Serial.readStringUntil('\n');
         Serial.println("> " + res);
