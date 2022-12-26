@@ -47,7 +47,9 @@ void loop() {
 /* --- for bve trainsim through bids serial --- */
 
 void bids() {
-    while (!digitalRead(0)) {
+    ioex.write(PCA95x5::Level::L_ALL);
+    delay(500);
+    while (digitalRead(0)) {
         Serial.println("TRIE1");
         auto res = Serial.readStringUntil('\n');
         Serial.println("> " + res);
@@ -56,6 +58,7 @@ void bids() {
         writeSpeed(spd);
         delay(100);
     }
+    delay(500);
 }
 
 /* --- for speedometor --- */
